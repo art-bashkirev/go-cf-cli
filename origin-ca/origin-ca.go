@@ -7,19 +7,15 @@ import (
 	"os"
 	"strings"
 
-	"github.com/cloudflare/cloudflare-go/v3"
-	"github.com/cloudflare/cloudflare-go/v3/option"
-	"github.com/cloudflare/cloudflare-go/v3/origin_ca_certificates"
-	"github.com/cloudflare/cloudflare-go/v3/shared"
-	"github.com/cloudflare/cloudflare-go/v3/ssl"
+	"github.com/cloudflare/cloudflare-go/v4"
+	"github.com/cloudflare/cloudflare-go/v4/origin_ca_certificates"
+	"github.com/cloudflare/cloudflare-go/v4/shared"
+	"github.com/cloudflare/cloudflare-go/v4/ssl"
 )
 
 func main() {
 	// Initialize Cloudflare client
-	client := cloudflare.NewClient(
-		option.WithAPIKey(os.Getenv("CLOUDFLARE_API_KEY")),
-		option.WithAPIEmail(os.Getenv("CLOUDFLARE_EMAIL")),
-	)
+	client := cloudflare.NewClient()
 
 	// Get user input for hostnames, request type, and validity
 	var hostnames []string
